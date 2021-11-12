@@ -1,0 +1,28 @@
+﻿@model List<OnlineBookStoreMVC.Context.tbl_BookList>
+@{
+    ViewBag.Title = "BookList";
+}
+
+<h2>Book List</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>Book Name</th>
+        <th>Category</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BookName</td>
+            <td>@item.Category</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="@Url.Action("Book",new { item.ID, item.BookName, item.Category, item.Price})" class="btn btn-success">Edit</a> <!--here we are sending the columns one by one -->
+                <a href="@Url.Action("Delete",new { item.ID})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+

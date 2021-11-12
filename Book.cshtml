@@ -1,0 +1,45 @@
+﻿@model OnlineBookStoreMVC.Context.tbl_BookList
+@{
+    ViewBag.Title = "Book";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<h2> Add Book</h2>
+@* Method Name,Controller Name, Form Method *@
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ID) <!--Hidden Form for ID,as to keep track of it-->
+            <label>Book Name</label>
+            @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            @Html.ValidationMessageFor(x => x.Category, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Price</label>
+            @Html.ValidationMessageFor(x => x.Price, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+
+    </div>
+}
+<form>
+</form>
+
